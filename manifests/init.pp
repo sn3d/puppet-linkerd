@@ -58,5 +58,12 @@ class linkerd (
   $user             = $::linkerd::params::user,
   $group            = $::linkerd::params::group,
 ) inherits linkerd::params {
+
   include linkerd::install
+  include linkerd::service
+
+  anchor { 'linkerd::start': }->
+  Class['linkerd::install']->
+  Class['linkerd::service']->
+  anchor { 'linkerd::end': }
 }

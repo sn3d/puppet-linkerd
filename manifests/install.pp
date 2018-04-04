@@ -25,19 +25,19 @@ class linkerd::install(
     user { $user:
        ensure => 'present'
        require => Group[$group],
-       before => Anchor['linkerd_pretinstall']
+       before => Anchor['linkerd::pretinstall']
     }
   }
 
   case $install_method {
     'archive': {
       class { 'linkerd::install::archive':
-        before => Anchor['linkerd_install']
+        before => Anchor['linkerd::install']
       }
     },
     'package': {
       class { 'linkerd::install::package':
-        before => Anchor['linkerd_install']
+        before => Anchor['linkerd::install']
       }
     },
     default: {
@@ -45,8 +45,8 @@ class linkerd::install(
     }
   }
 
-  anchor { 'linkerd_preinstall': } ->
-  anchor { 'linkerd_install': } ->
-  anchor { 'linkerd_postinstall': } ->
+  anchor { 'linkerd::preinstall': } ->
+  anchor { 'linkerd::install': } ->
+  anchor { 'linkerd::postinstall': } ->
 
 }

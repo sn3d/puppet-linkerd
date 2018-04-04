@@ -25,7 +25,7 @@ class linkerd::service(
         owner   => 'root',
         group   => 'root',
         mode    => '644',
-        before  => Service['linkerd']
+        before  => Anchor['linkerd::service::prepare']
       }
     },
     'init.d': {
@@ -35,9 +35,16 @@ class linkerd::service(
       fail('Valid service providers are `systemd` or `init.d`')
     }
   }
-  
-  service { 'linkerd':
-    ensure => 'running'
+
+  if $manage_service {
+    service { 'linkerd':
+      ensure => 'running',
+      before => Anchor['linkerd::service']
+    }
   }
+  an
+  chor { 'linkerd::service::prepare': } ->
+  anchor { 'linkerd::service': } ->
+
 
 }
