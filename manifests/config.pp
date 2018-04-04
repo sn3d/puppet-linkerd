@@ -34,13 +34,13 @@ class linkerd::config(
     order   => '1'
   }
 
-  concat::fragment{ 'linkerd_fragment_names':
+  concat::fragment{ 'linkerd_fragment_namers':
     target  => "$home/config/linkerd.yaml",
     content => "namers:",
     order   => '100'
   }
 
-  concat::fragment{ 'linkerd_fragment_names':
+  concat::fragment{ 'linkerd_fragment_routers':
     target  => "$home/config/linkerd.yaml",
     content => "routers:",
     order   => '200'
