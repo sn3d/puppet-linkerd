@@ -1,0 +1,9 @@
+- protocol: <%=@protocol%>
+  dtab: |
+<% dtab.each do |itm| -%>
+  <%= itm %>
+<% end -%>
+  label: <%=@label%>
+  servers:
+  - port: <%=@port%>
+    ip: <%=@ip%>

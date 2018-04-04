@@ -31,6 +31,19 @@ class linkerd::config(
   concat::fragment{ 'linkerd_fragment_admin':
     target  => "$home/config/linkerd.yaml",
     content => template("$module_name/linkerd.admin.erb"),
-    order   => '01'
+    order   => '1'
   }
+
+  concat::fragment{ 'linkerd_fragment_names':
+    target  => "$home/config/linkerd.yaml",
+    content => "namers:"
+    order   => '100'
+  }
+
+  concat::fragment{ 'linkerd_fragment_names':
+    target  => "$home/config/linkerd.yaml",
+    content => "routers:"
+    order   => '200'
+  }
+
 }
