@@ -24,14 +24,14 @@ class linkerd::install::archive(
     group => $group
   }
 
-  wget::fetch { $linkerd_archive:
+  wget::fetch { 'linkerd_archive':
     source      => $archive_url,
-    destination => $dl_file,
+    destination => $archive_dl,
     before      => Exec['linkerd-untar'],
   }
 
   exec { 'linkerd-untar':
-    command => "tar zxf ${archive_dl} --directory ${home}",
+    command => "mkdir -p ${home} && tar zxf ${archive_dl} --directory ${home} --strip-components=1 && chown -R $user:$group /opt/linkerd/*",
     creates => $home,
     path    => ['/bin','/usr/bin'],
   }

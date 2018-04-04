@@ -60,10 +60,12 @@ class linkerd (
 ) inherits linkerd::params {
 
   include linkerd::install
+  include linkerd::config
   include linkerd::service
 
   anchor { 'linkerd::start': }->
   Class['linkerd::install']->
+  Class['linkerd::config']->
   Class['linkerd::service']->
   anchor { 'linkerd::end': }
 }

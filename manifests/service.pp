@@ -27,10 +27,12 @@ class linkerd::service(
         mode    => '644',
         before  => Anchor['linkerd::service::prepare']
       }
-    },
+    }
+
     'init.d': {
       fail('Init.d is unsupported')
-    },
+    }
+
     default: {
       fail('Valid service providers are `systemd` or `init.d`')
     }
@@ -42,9 +44,8 @@ class linkerd::service(
       before => Anchor['linkerd::service']
     }
   }
-  an
-  chor { 'linkerd::service::prepare': } ->
-  anchor { 'linkerd::service': } ->
 
+  anchor { 'linkerd::service::prepare': } ->
+  anchor { 'linkerd::service': }
 
 }

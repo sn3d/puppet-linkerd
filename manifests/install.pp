@@ -19,13 +19,13 @@ class linkerd::install(
 
   if ($manage_user) {
     group { $group:
-       ensure = 'present'
+       ensure => 'present'
     }
 
     user { $user:
-       ensure => 'present'
+       ensure => 'present',
        require => Group[$group],
-       before => Anchor['linkerd::pretinstall']
+       before => Anchor['linkerd::preinstall']
     }
   }
 
@@ -34,12 +34,14 @@ class linkerd::install(
       class { 'linkerd::install::archive':
         before => Anchor['linkerd::install']
       }
-    },
+    }
+
     'package': {
       class { 'linkerd::install::package':
         before => Anchor['linkerd::install']
       }
-    },
+    }
+
     default: {
       fail('Valid installation methods are `package` or `archive`')
     }
@@ -47,6 +49,6 @@ class linkerd::install(
 
   anchor { 'linkerd::preinstall': } ->
   anchor { 'linkerd::install': } ->
-  anchor { 'linkerd::postinstall': } ->
+  anchor { 'linkerd::postinstall': }
 
 }
