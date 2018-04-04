@@ -26,15 +26,11 @@ class linkerd::config(
     content => template("$module_name/linkerd.environment.erb")
   }
 
-  yaml_setting { 'linkerd::admin::ip':
-    target => "$home/config/linkerd.yaml",
-    key    => 'admin/ip',
-    value  => '0.0.0.0'
-  }
+  concat { "$home/config/linkerd.yaml": }
 
-  yaml_setting { 'linkerd::admin::port':
-    target => "$home/config/linkerd.yaml",
-    key    => 'admin/port',
-    value  => '9999'
+  concat::fragment{ 'linkerd_fragment_admin':
+    target  => "$home/config/linkerd.yaml",
+    content => template("$module_name/linkerd.admin.erb")
+    order   => '01'
   }
 }
