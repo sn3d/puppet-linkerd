@@ -1,0 +1,21 @@
+{
+  "name": "sn3d-linkerd",
+  "version": "0.1.0",
+  "author": "sn3d",
+  "summary": "Puppet module for Linkerd application",
+  "license": "Apache-2.0",
+  "source": "https://github.com/sn3d/puppet-linkerd",
+  "project_page": "https://github.com/sn3d/puppet-linkerd",
+  "issues_url": "https://github.com/sn3d/puppet-linkerd/issues",
+  "dependencies": [
+    {
+      "name": "puppetlabs-stdlib",
+      "version_requirement": ">= 1.0.0"
+    },
+    {
+      "name": "maestrodev/wget",
+      "version_requirement": ">=1.0.0 <2.0.0"
+    }
+  ],
+  "data_provider": null
+}

@@ -1,0 +1,12 @@
+[Unit]
+Description=Linkerd 
+After=network.target
+
+[Service]
+Type=simple
+SyslogIdentifier=linkerd
+WorkingDirectory=<%=@home%>
+EnvironmentFile=/etc/sysconfig/linkerd
+ExecStart=<%=@home%>/linkerd-<%=@version%>-exec <%=@home%>/config/linkderd.yaml
+User=<%=@user%>
+Group=<%=@group%>
