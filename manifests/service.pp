@@ -12,6 +12,7 @@
 #
 class linkerd::service(
   $service_provider = $::linkerd::service_provider,
+  $manage_service   = $::linkerd::manage_service,
   $home             = $::linkerd::home,
   $version          = $::linkerd::version,
   $user             = $::linkerd::user,

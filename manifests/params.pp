@@ -16,6 +16,7 @@ class linkerd::params {
   $archive_url      = "https://github.com/linkerd/linkerd/releases/download/$version/linkerd-$version.tgz"
   $archive_dl       = "/tmp/linkerd.tar.gz"
   $package_name     = undef
+  $manage_service   = true
   $service_provider = "systemd"
   $home             = "/opt/linkerd"
   $manage_user      = true

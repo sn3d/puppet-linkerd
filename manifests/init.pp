@@ -52,6 +52,7 @@ class linkerd (
   $archive_dl       = $::linkerd::params::archive_dl,
   $package_name     = $::linkerd::params::package_name,
   $version          = $::linkerd::params::version,
+  $manage_service   = $::linkerd::params::manage_service,
   $service_provider = $::linkerd::params::service_provider,
   $home             = $::linkerd::params::home,
   $manage_user      = $::linkerd::params::manage_user,
