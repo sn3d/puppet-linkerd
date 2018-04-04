@@ -30,7 +30,7 @@ class linkerd::config(
 
   concat::fragment{ 'linkerd_fragment_admin':
     target  => "$home/config/linkerd.yaml",
-    content => template("$module_name/linkerd.admin.erb")
+    content => template("$module_name/linkerd.admin.erb"),
     order   => '01'
   }
 }
