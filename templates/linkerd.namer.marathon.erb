@@ -3,5 +3,7 @@
   host: <%=@host%>
   port: <%=@port%>
   prefix: "/io.l5d.marathon"
+<% if @uri_prefix -%>
   uriPrefix: "<%=@uri_prefix%>"
+<% end -%>
   useHealthCheck: false
