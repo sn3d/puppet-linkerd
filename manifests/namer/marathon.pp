@@ -1,4 +1,4 @@
-class linkerd::namer::fs(
+class linkerd::namer::marathon(
   $config_file = "$::linkerd::home/config/linkerd.yaml",
   $host = undef,
   $port = 8080,
